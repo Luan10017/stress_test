@@ -54,7 +54,7 @@ func validateInputs(rawURL string, requests, concurrency int) error {
         return errors.New("--url é obrigatório")
     }
 
-    validURLPattern := regexp.MustCompile(`^https?://[A-Za-z0-9.-]+\.[A-Za-z]{2,}(:[0-9]+)?(/.*)?$`)
+    validURLPattern := regexp.MustCompile(`^https?://(localhost|127\.0\.0\.1|[A-Za-z0-9.-]+(?:\.[A-Za-z]{2,})+)(:[0-9]+)?(/.*)?$`)
     if !validURLPattern.MatchString(rawURL) {
         return errors.New("--url deve ser uma URL válida, com http:// ou https://")
     }
